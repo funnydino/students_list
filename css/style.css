@@ -1,0 +1,238 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #cfe2ff;
+  --main-color_rgb: 207, 226, 255;
+  --hover-color: #c5d7f2;
+  --hover-color_rgb: 197, 215, 242;
+  --active-color: #bacbe6;
+  --active-color_rgb: 186, 203, 230;
+  --alpha: .3;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  background-color: #f7f6ff;
+}
+
+.container {
+  padding: 0 25px;
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.main-title {
+  padding: 5px 15px;
+  margin: 24px;
+  font-size: 24px;
+}
+
+.sandbox {
+  padding-bottom: 50px;
+  width: 100%;
+  max-width: 1150px;
+  text-align: center;
+}
+
+/* Форма для зачисления студента */
+
+.form-inner {
+  margin-bottom: 35px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Таблица 'Список студентов' */
+
+/* Фильтрация таблицы */
+
+.table-filter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-input {
+  flex: 0 1 24%;
+}
+
+/* Тело таблицы */
+
+.table-inner {
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+.table-inner--hidden {
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table-hover>tbody>tr:hover {
+  --bs-table-accent-bg: transparent;
+  color: inherit;
+}
+
+.table-hover>tbody>tr:hover>td:not(:last-child) {
+  --bs-table-accent-bg: var(--hover-color);
+  color: var(--bs-table-hover-color);
+}
+
+.students-list {
+  width: 100%;
+  height: 100%;
+  caption-side: top;
+}
+
+.students-list,
+th,
+td {
+  border: 1px solid #333;
+  vertical-align: middle;
+}
+
+.students-list tfoot th {
+  border-style: hidden;
+  border-top-style: solid;
+  text-align: right;
+}
+
+.table__caption {
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.table__body tr:nth-child(even) td:not(:last-child) {
+  background-color: rgba(var(--active-color_rgb), var(--alpha));
+}
+
+.table__body.table-filtered tr:nth-child(even) td:not(:last-child) {
+  background-color: transparent;
+}
+
+th:not(:last-child),
+td:not(:last-child) {
+  padding: 5px 15px;
+}
+
+th:last-child,
+td:last-child {
+  border-style: hidden;
+  border-left-style: solid;
+  text-align: left;
+}
+
+th:not(:last-child) {
+  background-color: var(--main-color);
+  transition: background-color .2s ease;
+}
+
+@media (min-width: 1025px) {
+
+  th:not(:last-child):hover {
+    background-color: var(--hover-color);
+    cursor: pointer;
+  }
+
+}
+
+.table__head th:not(:last-child):active {
+  background-color: var(--active-color);
+}
+
+th.table-sort {
+  position: relative;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.table-sort::after {
+  content: '';
+  position: absolute;
+  top: calc(50% + 3px);
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid #333;
+  border-right: 3px solid #333;
+  transform: translateY(-50%) rotate(-45deg) scaleY(1);
+  opacity: 0;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.table-sort.reversed::after {
+  opacity: 1;
+}
+
+.table-sort.sorted::after {
+  top: 50%;
+  opacity: 1;
+  transform: translateY(-50%) rotate(45deg) scaleY(-1);
+}
+
+.table-sort.sorted,
+.table-sort.reversed {
+  background-color: var(--hover-color);
+}
+
+.row--hidden {
+  display: none;
+}
+
+@media (max-width: 992px) {
+
+  .table-filter {
+    flex-direction: column;
+  }
+
+  .filter-input {
+    flex-basis: auto;
+  }
+
+  .filter-input:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.btn-clear {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: transform .25s ease, opacity .25s ease .25s, visibility .25s ease .25s;
+}
+
+.btn-clear--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0);
+  transition: transform .25s ease, opacity .25s ease, visibility .25s ease;
+}

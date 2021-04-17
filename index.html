@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Пономарёв Алексей">
+  <meta name="keywords" content="javascript, skillbox, frontend">
+  <meta name="description" content="Изучение языка программирования JavaScript">
+  <link rel="icon" href="./images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- <script defer src="./js/bootstrap.min.js"></script> -->
+  <script defer src="./js/main.js"></script>
+  <title>Преобразование типов и нестрогие сравнения</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="main-title">Преобразование типов и нестрогие сравнения</h1>
+    <hr>
+    <div class="sandbox">
+      <div class="form-inner">
+        <form class="form student-form needs-validation" id="new-student" action="#"
+          aria-label="Форма добавления нового студента" novalidate>
+          <h2 class="form__title">
+            Добавить студента
+          </h2>
+          <div class="row row-cols-lg-auto g-3 align-items-center">
+            <div class="col-12">
+              <div class="form-floating mb-3">
+                <input id="name" class="form__input form-control form__input--name required" type="text" name="name"
+                  placeholder="Фамилия, имя и отчество студента">
+                <label for="name">ФИО студента</label>
+                <div class="valid-feedback">
+                  Все хорошо!
+                </div>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-floating mb-3">
+                <input id="faculty" class="form__input form-control form__input--faculty required" type="text"
+                  name="faculty" placeholder="Введите ваш факультет">
+                <label for="faculty">Факультет</label>
+                <div class="valid-feedback">
+                  Все хорошо!
+                </div>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-floating mb-3">
+                <input id="bday" class="form__input form-control form__input--bday required" type="date" name="bday">
+                <label for="bday">Дата рождения:</label>
+                <div class="valid-feedback">
+                  Все хорошо!
+                </div>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-floating mb-3">
+                <input id="admission" class="form__input form-control form__input--admission required" type="number"
+                  name="admission">
+                <label for="admission">Дата поступления:</label>
+                <div class="valid-feedback">
+                  Все хорошо!
+                </div>
+                <div class="invalid-feedback">
+                  Год поступления &lpar;2000 &rbarr; ...&rpar;
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="submit__btn btn btn-primary" type="submit">Зачислить студента</button>
+        </form>
+      </div>
+      <div class="table-inner">
+        <div class="table-filter">
+          <input id="filter-by-name" class="filter-input form-control" type="text" name="filter-by-name"
+            placeholder="Фильтрация по имени" data-filter="0">
+          <input id="filter-by-faculty" class="filter-input form-control" type="text" name="filter-by-faculty"
+            placeholder="Фильтрация по Факультету" data-filter="1">
+          <input id="filter-by-bday" class="filter-input form-control" type="text" name="filter-by-bday"
+            placeholder="Фильтрация по дате рождения" data-filter="2">
+          <input id="filter-by-admission" class="filter-input form-control" type="text" name="filter-by-admission"
+            placeholder="Фильтрация по дате поступления / окончания учёбы" data-filter="3">
+        </div>
+        <table class="table students-list table-hover">
+          <caption class="table__caption">Список студентов:</caption>
+          <thead class="table__head">
+            <tr>
+              <th class="table-sort" data-sort="0" title="Сортировать">ФИО студента</th>
+              <th class="table-sort" data-sort="1" title="Сортировать">Факультет</th>
+              <th class="table-sort" data-sort="2" title="Сортировать">Дата рождения, возраст</th>
+              <th class="table-sort" data-sort="3" title="Сортировать">Годы обучения, курс</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+          </tbody>
+          <tfoot class="table__footer">
+            <tr>
+              <th colspan="4">
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <button class="btn-clear btn btn-danger">Отчислить всех студентов</button>
+    </div>
+  </div>
+</body>
+
+</html>
